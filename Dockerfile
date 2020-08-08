@@ -4,11 +4,11 @@ WORKDIR /unity
 
 RUN apt update
 
-RUN apt install -y wget
+RUN apt install -y wget xz-utils
 
 RUN wget "https://download.unity3d.com/download_unity/2285c3239188/LinuxEditorInstaller/Unity.tar.xz" \
 	&& xz -d Unity.tar.xz \
 	&& tar xf Unity.tar \
 	&& rm Unity.tar
 
-RUN apt install xz-utils libgl-dev libxcursor1
+RUN apt install libgl-dev libxcursor1
