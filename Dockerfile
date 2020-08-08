@@ -11,8 +11,6 @@ RUN wget "https://download.unity3d.com/download_unity/2285c3239188/LinuxEditorIn
 
 RUN xz -d Unity.tar.xz
 
-RUN rm Unity.tar.xz
-
 RUN tar xf Unity.tar
 
 RUN rm Unity.tar
