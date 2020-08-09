@@ -14,7 +14,13 @@ RUN wget "https://download.unity3d.com/download_unity/2285c3239188/LinuxEditorIn
 RUN apt install -y libgl-dev libxcursor1 libxrandr-dev libgtk-3-dev
 
 # above is not required
-RUN apt install -y ssh zip git curl
+RUN apt install -y python-software-properties software-properties-common
+
+RUN add-apt-repository ppa:git-core/ppa -y
+
+RUN apt update
+
+RUN apt install -y ssh zip curl git
 
 RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash
 
