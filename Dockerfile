@@ -11,4 +11,4 @@ RUN wget "https://download.unity3d.com/download_unity/2285c3239188/LinuxEditorIn
 	&& tar xf Unity.tar \
 	&& rm Unity.tar
 
-RUN apt install -y libgl-dev libxcursor1 libxrandr-dev libgtk-3-dev
+RUN apt install -y libgl-dev libxcursor1 libxrandr-dev libgtk-3-dev ssh
