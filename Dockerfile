@@ -20,4 +20,4 @@ RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.d
 
 RUN apt install -y git-lfs
 
-RUN git lfs init
+RUN git lfs install
