@@ -11,4 +11,13 @@ RUN wget "https://download.unity3d.com/download_unity/2285c3239188/LinuxEditorIn
 	&& tar xf Unity.tar \
 	&& rm Unity.tar
 
-RUN apt install -y libgl-dev libxcursor1 libxrandr-dev libgtk-3-dev ssh zip
+RUN apt install -y libgl-dev libxcursor1 libxrandr-dev libgtk-3-dev
+
+# above is not required
+RUN apt install -y ssh zip git curl
+
+RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash
+
+RUN apt install -y git-lfs
+
+RUN git lfs init
