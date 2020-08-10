@@ -33,7 +33,7 @@ RUN cd /tmp \
 	&& cd /unity/Editor/Data/PlaybackEngines/MacStandaloneSupport \
 	&& cat /tmp/TargetSupport.pkg.tmp/Payload | gunzip -dc | cpio -i \
 	&& ls \
-	&& rm /tmp/*
+	&& rm -r /tmp/*
 
 # above is not required
 RUN apt install -y python-software-properties software-properties-common
