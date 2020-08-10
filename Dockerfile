@@ -14,8 +14,8 @@ RUN wget "https://download.unity3d.com/download_unity/2285c3239188/LinuxEditorIn
 RUN apt install -y libgl-dev libxcursor1 libxrandr-dev libgtk-3-dev
 
 # mac build support
-RUN wget https://download.unity3d.com/download_unity/2285c3239188/MacEditorTargetInstaller/UnitySetup-Mac-Mono-Support-for-Editor-2020.1.1f1.pkg
-	&& xar -xf UnitySetup-Mac-Mono-Support-for-Editor-2020.1.1f1.pkg -C Editor/Data/PlaybackEngines/MacStandaloneSupport
+RUN wget https://download.unity3d.com/download_unity/2285c3239188/MacEditorTargetInstaller/UnitySetup-Mac-Mono-Support-for-Editor-2020.1.1f1.pkg \
+	&& xar -xf UnitySetup-Mac-Mono-Support-for-Editor-2020.1.1f1.pkg -C Editor/Data/PlaybackEngines/MacStandaloneSupport \
 	&& rm UnitySetup-Mac-Mono-Support-for-Editor-2020.1.1f1.pkg
 
 # above is not required
