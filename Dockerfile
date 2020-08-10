@@ -25,8 +25,10 @@ RUN wget https://storage.googleapis.com/google-code-archive-downloads/v2/code.go
 
 # mac build support
 RUN wget https://download.unity3d.com/download_unity/2285c3239188/MacEditorTargetInstaller/UnitySetup-Mac-Mono-Support-for-Editor-2020.1.1f1.pkg \
-	&& xar -xf UnitySetup-Mac-Mono-Support-for-Editor-2020.1.1f1.pkg -C Editor/Data/PlaybackEngines/MacStandaloneSupport \
-	&& rm UnitySetup-Mac-Mono-Support-for-Editor-2020.1.1f1.pkg
+	&& mkdir -p Editor/Data/PlaybackEngines/MacStandaloneSupport \
+	&& cd Editor/Data/PlaybackEngines/MacStandaloneSupport \
+	&& xar -xf ../../../../UnitySetup-Mac-Mono-Support-for-Editor-2020.1.1f1.pkg \
+	&& rm ../../../../UnitySetup-Mac-Mono-Support-for-Editor-2020.1.1f1.pkg
 
 # above is not required
 RUN apt install -y python-software-properties software-properties-common
