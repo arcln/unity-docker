@@ -14,7 +14,7 @@ RUN wget "https://download.unity3d.com/download_unity/2285c3239188/LinuxEditorIn
 RUN apt install -y libgl-dev libxcursor1 libxrandr-dev libgtk-3-dev
 
 # build xar
-RUN apt install -y build-essential libxml2-dev libssl1.0-dev zlib1g-dev
+RUN apt install -y build-essential libxml2-dev libssl-dev zlib1g-dev
 
 RUN wget https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/xar/xar-1.5.2.tar.gz \
 	&& tar -zxvf xar-1.5.2.tar.gz \
