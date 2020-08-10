@@ -4,7 +4,7 @@ WORKDIR /unity
 
 RUN apt update
 
-RUN apt install -y wget xz-utils
+RUN apt install -y wget xz-utils cpio
 
 RUN wget "https://download.unity3d.com/download_unity/2285c3239188/LinuxEditorInstaller/Unity.tar.xz" \
 	&& xz -d Unity.tar.xz \
@@ -24,11 +24,16 @@ RUN wget https://storage.googleapis.com/google-code-archive-downloads/v2/code.go
 	&& make install
 
 # mac build support
-RUN wget https://download.unity3d.com/download_unity/2285c3239188/MacEditorTargetInstaller/UnitySetup-Mac-Mono-Support-for-Editor-2020.1.1f1.pkg \
-	&& mkdir -p Editor/Data/PlaybackEngines/MacStandaloneSupport \
-	&& cd Editor/Data/PlaybackEngines/MacStandaloneSupport \
-	&& xar -xf ../../../../UnitySetup-Mac-Mono-Support-for-Editor-2020.1.1f1.pkg \
-	&& rm ../../../../UnitySetup-Mac-Mono-Support-for-Editor-2020.1.1f1.pkg
+RUN cd /tmp \
+	&& wget https://download.unity3d.com/download_unity/2285c3239188/MacEditorTargetInstaller/UnitySetup-Mac-Mono-Support-for-Editor-2020.1.1f1.pkg -O mac-support.pkg \
+	&& ls \
+	&& xar -xf mac-support.pkg \
+	&& ls \
+	&& mkdir -p /unity/Editor/Data/PlaybackEngines/MacStandaloneSupport \
+	&& cd /unity/Editor/Data/PlaybackEngines/MacStandaloneSupport \
+	&& cat /tmp/TargetSupport.pkg.tmp/Payload | gunzip -dc | cpio -i \
+	&& ls \
+	&& rm /tmp/*
 
 # above is not required
 RUN apt install -y python-software-properties software-properties-common
