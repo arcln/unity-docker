@@ -4,7 +4,7 @@ WORKDIR /unity
 
 RUN apt update
 
-RUN apt install -y wget xz-utils cpio
+RUN apt install -y wget xz-utils cpio zip
 
 RUN wget "https://download.unity3d.com/download_unity/2285c3239188/LinuxEditorInstaller/Unity.tar.xz" \
 	&& xz -d Unity.tar.xz \
