@@ -61,9 +61,8 @@ RUN cd /tmp \
 # android ndk tools
 RUN cd /tmp \
 	&& wget https://dl.google.com/android/repository/android-ndk-r19-linux-x86_64.zip -O android-ndk.zip \
-	&& mkdir -p /unity/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/android-ndk-r19 \
-	&& cd /unity/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/android-ndk-r19 \
 	&& unzip /tmp/android-ndk.zip \
+	&& mv /tmp/android-ndk-r19 /unity/Editor/Data/PlaybackEngines/AndroidPlayer/NDK \
 	&& rm -r /tmp/*
 
 # android sdk platforms
