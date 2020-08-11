@@ -58,6 +58,17 @@ RUN cd /tmp \
 	&& cat /tmp/TargetSupport.pkg.tmp/Payload | gunzip -dc | cpio -i \
 	&& ls \
 	&& rm -r /tmp/*
+	
+# ios build support
+RUN cd /tmp \
+	&& wget https://download.unity3d.com/download_unity/2285c3239188/LinuxEditorTargetInstaller/UnitySetup-iOS-Support-for-Editor-2020.1.1f1.tar.xz -O ios-support.tar.xz \
+	&& ls \
+	&& xz -d ios-support.tar.xz
+	&& ls \
+	&& cd /unity/Editor/Data/PlaybackEngines \
+	&& tar -xf /tmp/ios-support.tar
+	&& ls \
+	&& rm -r /tmp/*
 
 # above is not required
 RUN apt install -y python-software-properties software-properties-common
