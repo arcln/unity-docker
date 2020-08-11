@@ -104,7 +104,7 @@ RUN cd /tmp \
 RUN cd /tmp \
 	&& wget https://download.unity3d.com/download_unity/2285c3239188/LinuxEditorTargetInstaller/UnitySetup-iOS-Support-for-Editor-2020.1.1f1.tar.xz -O ios-support.tar.xz \
 	&& xz -d ios-support.tar.xz \
-	&& cd /unity/Editor/Data/PlaybackEngines \
+	&& cd /unity \
 	&& tar -xf /tmp/ios-support.tar \
 	&& rm -r /tmp/*
 
