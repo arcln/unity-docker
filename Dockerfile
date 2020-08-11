@@ -22,7 +22,7 @@ RUN wget https://storage.googleapis.com/google-code-archive-downloads/v2/code.go
 	&& ./configure \
 	&& make \
 	&& make install
-
+	
 # mac build support
 RUN cd /tmp \
 	&& wget https://download.unity3d.com/download_unity/2285c3239188/MacEditorTargetInstaller/UnitySetup-Mac-Mono-Support-for-Editor-2020.1.1f1.pkg -O mac-support.pkg \
@@ -31,6 +31,30 @@ RUN cd /tmp \
 	&& ls \
 	&& mkdir -p /unity/Editor/Data/PlaybackEngines/MacStandaloneSupport \
 	&& cd /unity/Editor/Data/PlaybackEngines/MacStandaloneSupport \
+	&& cat /tmp/TargetSupport.pkg.tmp/Payload | gunzip -dc | cpio -i \
+	&& ls \
+	&& rm -r /tmp/*
+	
+# windows build support
+RUN cd /tmp \
+	&& wget https://download.unity3d.com/download_unity/2285c3239188/MacEditorTargetInstaller/UnitySetup-Windows-Mono-Support-for-Editor-2020.1.1f1.pkg -O windows-support.pkg \
+	&& ls \
+	&& xar -xf windows-support.pkg \
+	&& ls \
+	&& mkdir -p /unity/Editor/Data/PlaybackEngines/WindowsStandaloneSupport \
+	&& cd /unity/Editor/Data/PlaybackEngines/WindowsStandaloneSupport \
+	&& cat /tmp/TargetSupport.pkg.tmp/Payload | gunzip -dc | cpio -i \
+	&& ls \
+	&& rm -r /tmp/*
+
+# android build support
+RUN cd /tmp \
+	&& wget https://download.unity3d.com/download_unity/2285c3239188/MacEditorTargetInstaller/UnitySetup-Android-Support-for-Editor-2020.1.1f1.pkg -O android-support.pkg \
+	&& ls \
+	&& xar -xf android-support.pkg \
+	&& ls \
+	&& mkdir -p /unity/Editor/Data/PlaybackEngines/AndroidPlayer \
+	&& cd /unity/Editor/Data/PlaybackEngines/AndroidPlayer \
 	&& cat /tmp/TargetSupport.pkg.tmp/Payload | gunzip -dc | cpio -i \
 	&& ls \
 	&& rm -r /tmp/*
